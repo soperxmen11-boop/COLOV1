@@ -1,4 +1,4 @@
-/* KIDS PRO UPGRADE */
+/* Colorinka UPGRADE */
 export const $=(sel,root=document)=>root.querySelector(sel);
 export const $$=(sel,root=document)=>Array.from(root.querySelectorAll(sel));
 export const on=(el,ev,cb,opts)=>el&&el.addEventListener(ev,cb,opts);

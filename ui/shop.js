@@ -1,4 +1,4 @@
-/* KIDS PRO UPGRADE */
+/* Colorinka UPGRADE */
 import { $, on } from './utils.js';
 import { sfxClick } from './audio.js';
 const btnShop=$('#btnShop'); const shopPanel=$('#shopPanel'); const btnShopClose=$('#btnShopClose')||$('#shopClose');

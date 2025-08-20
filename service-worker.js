@@ -1,6 +1,6 @@
 
-/* KIDS PRO UPGRADE: PWA service worker (pro) */
-const CACHE = 'kidspro-v2';
+/* Colorinka UPGRADE: PWA service worker (pro) */
+const CACHE = 'Colorinka-v2';
 const CORE = [
   "index.html",
   "jghg-main/game.js",

@@ -1,4 +1,4 @@
-/* KIDS PRO UPGRADE */
+/* Colorinka UPGRADE */
 import { $, on } from './utils.js';
 const statsBtn=$('#btnStats'); const statsPanel=$('#statsPanel');
 let inGame=false;

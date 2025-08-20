@@ -28,7 +28,7 @@
 
   function stop(){
     started = false;
-    if (rafId) /* KIDS PRO UPGRADE: cancel RAF removed */
+    if (rafId) /* Colorinka UPGRADE: cancel RAF removed */
     const bar = document.getElementById('kp-timer');
     if (bar) bar.classList.add('hidden');
   }

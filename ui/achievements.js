@@ -51,7 +51,7 @@ let session = { totalCorrect:0, streak:0, colorCorrect:0, mascotCorrect:0, playe
   }
 
   
-  function armRoundTimer(){ /* KIDS PRO UPGRADE: round stats timer removed */ }catch(_){} }
+  function armRoundTimer(){ /* Colorinka UPGRADE: round stats timer removed */ }catch(_){} }
       \1 try{ kpFX.wrong && kpFX.wrong(event?.currentTarget || this); }catch(e){}; \2 \3catch(_){} }
       // reset for next round
       session.inRound = false; session.roundAttempts = 0; session.roundWrong = 0; session.roundScore = 0; session.streak = 0;
@@ -157,7 +157,7 @@ let session = { totalCorrect:0, streak:0, colorCorrect:0, mascotCorrect:0, playe
   }
 
   // Stats modal
-  function ensureStats(){ /* KIDS PRO UPGRADE: stats UI removed */ return null; });
+  function ensureStats(){ /* Colorinka UPGRADE: stats UI removed */ return null; });
     // actions
     modal.querySelector('#stAchv').addEventListener('click', openAchvModal);
     modal.querySelector('#stRetry').addEventListener('click', ()=> location.reload());
@@ -165,7 +165,7 @@ let session = { totalCorrect:0, streak:0, colorCorrect:0, mascotCorrect:0, playe
     return modal;
   }
 
-  function openStats(){ /* KIDS PRO UPGRADE: stats UI removed */ }
+  function openStats(){ /* Colorinka UPGRADE: stats UI removed */ }
 
   // Level Up sound (hook KPProgress)
   function hookLevelUpSound(){
@@ -204,6 +204,6 @@ let session = { totalCorrect:0, streak:0, colorCorrect:0, mascotCorrect:0, playe
 })();
 
 
-// KIDS PRO UPGRADE: global guard to disable KPStats if present
+// Colorinka UPGRADE: global guard to disable KPStats if present
 window.KPStats = window.KPStats || {};
 window.KPStats.open = function(){ /* disabled */ };

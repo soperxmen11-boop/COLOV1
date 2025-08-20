@@ -17,15 +17,15 @@
   <link rel="stylesheet" href="ui/achievements.css">
   <link rel="stylesheet" href="ui/stats.css">
   <link rel="stylesheet" href="ui/timer.css">
-<link rel="manifest" href="manifest.webmanifest"> <!-- KIDS PRO UPGRADE -->
-<meta name="theme-color" content="#0b1020"> <!-- KIDS PRO UPGRADE -->
-<meta name="description" content="KidsPro — kid-friendly timed puzzles."> <!-- KIDS PRO UPGRADE -->
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <!-- KIDS PRO UPGRADE -->
-<link rel="apple-touch-icon" href="assets/icons/icon-192.png"> <!-- KIDS PRO UPGRADE -->
-<meta name="apple-mobile-web-app-capable" content="yes"> <!-- KIDS PRO UPGRADE -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- KIDS PRO UPGRADE -->
+<link rel="manifest" href="manifest.webmanifest"> <!-- Colorinka UPGRADE -->
+<meta name="theme-color" content="#0b1020"> <!-- Colorinka UPGRADE -->
+<meta name="description" content="Colorinka — kid-friendly timed puzzles."> <!-- Colorinka UPGRADE -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <!-- Colorinka UPGRADE -->
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png"> <!-- Colorinka UPGRADE -->
+<meta name="apple-mobile-web-app-capable" content="yes"> <!-- Colorinka UPGRADE -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- Colorinka UPGRADE -->
 <style>
-/* KIDS PRO UPGRADE */ 
+/* Colorinka UPGRADE */ 
 #splashOverlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#4587FF 0%,#2ED5A2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px}
 #splashOverlay img{width:min(38vh,320px);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
 #splashOverlay .brand{font:800 32px/1.2 system-ui,Segoe UI,Roboto,Poppins,sans-serif;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.25)}
@@ -39,7 +39,7 @@
 </div> class="theme-candy">
   <div id="toasts" class="toasts"></div>
   <header class="topbar">
-    <div class="brand"><img src="icons/logo.png" class="logo"><span>Kids Pro</span></div>
+    <div class="brand"><img src="icons/logo.png" class="logo"><span>Colorinka</span></div>
     <div class="hud-right">
       <div class="coins">🪙 <b id="coins">0</b></div>
       <label>Music</label><input id="volMusic" type="range" min="0" max="1" step="0.01" value="0.18">
@@ -129,7 +129,7 @@
     <div class="row center"><button class="btn" data-nav="homePage">🏠 Menu</button><button id="btnRestartM" class="btn primary">🔁 Restart</button></div>
   </section>
 
-  <footer class="footer"><small>Kids Pro — PWA • Offline • Shop • Settings</small></footer>
+  <footer class="footer"><small>Colorinka — PWA • Offline • Shop • Settings</small></footer>
 
   <script src="game.js" defer></script>
   <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js'))}</script>
@@ -145,13 +145,13 @@
   <script src="ui/progress.js" defer></script>
   <script src="ui/achievements.js" defer></script>
   <script src="ui/timer.js" defer></script>
-<div id="shopPanel" class="panel hidden"> <!-- KIDS PRO UPGRADE -->
+<div id="shopPanel" class="panel hidden"> <!-- Colorinka UPGRADE -->
   <h3>Shop</h3>
   <button id="btnShopClose" class="btn-secondary">Close</button>
 </div>
 
 <script>
-/* KIDS PRO UPGRADE */
+/* Colorinka UPGRADE */
 window.addEventListener('load',()=>{
   const el=document.getElementById('splashOverlay');
   setTimeout(()=>{if(el){el.style.animation='fadeOut .5s ease forwards';setTimeout(()=>el.remove(),650)}},700);

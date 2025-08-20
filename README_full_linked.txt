@@ -1,5 +1,5 @@
 
-Kids Pro — FULL LINKED BUILD
+Colorinka — FULL LINKED BUILD
 ----------------------------
 This build ensures all UI/Audio/FX files are referenced in index.html.
 Files included/linked:

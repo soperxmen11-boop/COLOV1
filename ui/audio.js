@@ -1,4 +1,4 @@
-/* KIDS PRO UPGRADE */
+/* Colorinka UPGRADE */
 import { $, on, session } from './utils.js';
 const musicEl=$('#music');   // <audio id="music" src="assets/music/theme.mp3" loop></audio>
 const clickEl=$('#sfxClick'); // <audio id="sfxClick" src="assets/sfx/click.mp3"></audio>
@@ -11,4 +11,4 @@ export function musicStop(){ musicEl&&musicEl.pause&&musicEl.pause(); }
 export function toggleMusic(onOff){ state.music=onOff??!state.music; session.set('settings',state); applyVolumes(); state.music?musicStart():musicStop(); }
 export function toggleSfx(onOff){ state.sfx=onOff??!state.sfx; session.set('settings',state); applyVolumes(); }
 export function initAudioUI(){ applyVolumes(); on($('#toggleMusic'),'click',()=>toggleMusic()); on($('#toggleSfx'),'click',()=>toggleSfx()); }
-document.addEventListener('DOMContentLoaded',()=>{ initAudioUI(); /* KIDS PRO UPGRADE */ });
+document.addEventListener('DOMContentLoaded',()=>{ initAudioUI(); /* Colorinka UPGRADE */ });

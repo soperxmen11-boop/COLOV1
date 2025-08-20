@@ -1,4 +1,4 @@
-TEST PLAN – KidsPro (PWA Pro)
+TEST PLAN – Colorinka (PWA Pro)
 1) Installability:
    - Serve via localhost (HTTPS preferred). Chrome should offer "Install".
    - After install, app opens standalone without URL bar.

@@ -1,32 +1,32 @@
-/* KIDS PRO UPGRADE (fallback) */
+/* Colorinka UPGRADE (fallback) */
 import { $, clamp } from './utils.js';
 import { musicStart, musicStop, sfxClick } from './audio.js';
 import { setInGame } from './stats.js';
 import { getDuration } from './settings.js';
-/* KIDS PRO UPGRADE: round seconds removed */ /* KIDS PRO UPGRADE */
+/* Colorinka UPGRADE: round seconds removed */ /* Colorinka UPGRADE */
 const barFill = document.querySelector('.timer-bar__fill');
 const popup = document.getElementById('endPopup');
 const popupTitle = document.getElementById('endPopupTitle');
 const popupSubtitle = document.getElementById('endPopupSubtitle');
 let score=0, roundActive=false, startTs=0, rafId=null;
-/* KIDS PRO UPGRADE: progress bar removed */
-/* KIDS PRO UPGRADE: timer loop removed */
+/* Colorinka UPGRADE: progress bar removed */
+/* Colorinka UPGRADE: timer loop removed */
 export function addScore(d=1){ if(!roundActive) return; score+=d; }
 export function startRound(){
   ROUND_SECONDS = (typeof getDuration==='function' ? getDuration() : 60);
- if(roundActive) return; ROUND_SECONDS=getDuration(); score=0; roundActive=true; setInGame(true); startTs=performance.now(); /* KIDS PRO UPGRADE: cancel RAF removed */ musicStart(); /* KIDS PRO UPGRADE: RAF removed */   startTs = performance.now();
+ if(roundActive) return; ROUND_SECONDS=getDuration(); score=0; roundActive=true; setInGame(true); startTs=performance.now(); /* Colorinka UPGRADE: cancel RAF removed */ musicStart(); /* Colorinka UPGRADE: RAF removed */   startTs = performance.now();
   try{ cancelAnimationFrame(rafId);}catch{}
   setCircleProgress(ROUND_SECONDS);
   rafId = requestAnimationFrame(loop);
 }
 function endRound(){
-  /* KIDS PRO UPGRADE: stop circle timer */
+  /* Colorinka UPGRADE: stop circle timer */
   try{ cancelAnimationFrame(rafId);}catch{};
- if(!roundActive) return; roundActive=false; setInGame(false); /* KIDS PRO UPGRADE: cancel RAF removed */ musicStop(); const passed=score>=10; if(popup){ popupTitle.textContent=passed?'Mission Passed':'Game Over'; popupSubtitle.textContent=`Score: ${score}`; popup.classList.remove('hidden'); } }
+ if(!roundActive) return; roundActive=false; setInGame(false); /* Colorinka UPGRADE: cancel RAF removed */ musicStop(); const passed=score>=10; if(popup){ popupTitle.textContent=passed?'Mission Passed':'Game Over'; popupSubtitle.textContent=`Score: ${score}`; popup.classList.remove('hidden'); } }
 function closeEndPopup(){ popup?.classList.add('hidden'); }
 document.addEventListener('DOMContentLoaded',()=>{ const btnStart=document.getElementById('btnStart'); const btnEndClose=document.getElementById('endPopupClose'); btnStart?.addEventListener('click',(e)=>{e.preventDefault(); sfxClick(); closeEndPopup(); startRound();}); btnEndClose?.addEventListener('click',(e)=>{e.preventDefault(); closeEndPopup();}); });
 
-/* KIDS PRO UPGRADE: circle timer helpers */
+/* Colorinka UPGRADE: circle timer helpers */
 function setCircleProgress(remaining){
   const total = ROUND_SECONDS || 60;
   const pct = Math.max(0, Math.min(1, remaining / total));
@@ -49,7 +49,7 @@ function loop(now){
   rafId = requestAnimationFrame(loop);
 }
 
-/* KIDS PRO UPGRADE: FX helper */
+/* Colorinka UPGRADE: FX helper */
 window.kpFX = (function(){
   function addOnce(el, cls, ms=400){
     if(!el) return;

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{const home=document.getElement
 if(!document.getElementById('ui-bg')){const bg=document.createElement('div');bg.id='ui-bg';document.body.appendChild(bg);}
 const shell=document.createElement('div');shell.id='homeShell';shell.innerHTML=`
   <div id="homeHeader">
-    <div class="brand">Kids Pro</div>
+    <div class="brand">Colorinka</div>
     <button id="burger" aria-label="Open menu" title="Menu">☰</button>
   </div>
   <div id="choiceGrid">

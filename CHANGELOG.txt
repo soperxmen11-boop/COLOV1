@@ -1,4 +1,4 @@
-KidsPro – PWA Pro Patch
+Colorinka – PWA Pro Patch
 ------------------------
 - Added manifest.webmanifest (maskable icons, portrait, scope/start_url ./).
 - Added service-worker.js with offline navigate fallback and runtime cache.
