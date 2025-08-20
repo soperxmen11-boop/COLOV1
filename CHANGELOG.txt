@@ -1,0 +1,7 @@
+KidsPro – PWA Pro Patch
+------------------------
+- Added manifest.webmanifest (maskable icons, portrait, scope/start_url ./).
+- Added service-worker.js with offline navigate fallback and runtime cache.
+- Added offline.html and privacy.html.
+- index.html: meta tags, manifest link, SW register, defer local scripts.
+- CSS: focus-visible ring + 44px tap targets.

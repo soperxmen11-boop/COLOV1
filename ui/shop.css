@@ -1,0 +1,19 @@
+
+/* ui/shop.css — simple shop modal */
+#kp-shop.kp-modal { display:none; align-items:center; justify-content:center; }
+#kp-shop.open { display:flex; }
+#kp-shop .kp-card { width: min(720px, 92vw); }
+.kp-shop-grid {
+  display:grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+  gap:12px; margin-top:10px;
+}
+.kp-shop-item {
+  background:#fff; border-radius:14px; padding:12px; text-align:center;
+  box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+.kp-shop-item .icon { font-size:28px; }
+.kp-shop-item .name { font-weight:800; margin-top:6px; }
+.kp-shop-item .buy { margin-top:8px; }
+.kp-shop-close {
+  position:absolute; top:10px; right:12px; border:0; background:transparent; font-size:20px; cursor:pointer;
+}

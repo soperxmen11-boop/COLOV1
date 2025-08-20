@@ -1,0 +1,12 @@
+TEST PLAN – KidsPro (PWA Pro)
+1) Installability:
+   - Serve via localhost (HTTPS preferred). Chrome should offer "Install".
+   - After install, app opens standalone without URL bar.
+2) Offline:
+   - Load once, then turn offline, refresh -> offline.html for navigations, assets from cache.
+3) No Console Errors:
+   - Open DevTools, reload -> ensure zero red errors.
+4) Performance:
+   - Lighthouse: PWA + Best Practices + Accessibility ≥ 90.
+5) Touch & Focus:
+   - Buttons have ≥44px hit area and visible focus ring.

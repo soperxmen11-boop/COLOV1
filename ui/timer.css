@@ -1,0 +1,28 @@
+
+/* ui/timer.css — top progress bar + countdown label */
+#kp-timer {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 10px;
+  background: rgba(0,0,0,0.12);
+  z-index: 11000;
+  pointer-events: none;
+}
+#kp-timer .fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8A4DFF, #FF6FD8);
+  transition: width 0.2s linear;
+}
+#kp-timer .label {
+  position: absolute;
+  right: 8px; top: 14px;
+  background: rgba(0,0,0,0.6);
+  color: #fff; font-weight: 900; font-size: 12px;
+  padding: 4px 8px; border-radius: 999px;
+  pointer-events: none;
+}
+@media (max-width: 480px){
+  #kp-timer .label { top: 12px; font-size: 11px; }
+}
+.hidden { display: none !important; }

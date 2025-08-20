@@ -1,0 +1,31 @@
+
+/* ui/achievements.css */
+.kp-toast {
+  position: fixed; right: 14px; bottom: 14px; z-index: 15000;
+  background: #fff; border-radius: 14px; padding: 12px 14px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.25);
+  display: none; align-items: center; gap: 10px; font-weight: 900;
+}
+.kp-toast.show { display: flex; animation: kpToastIn .35s ease; }
+@keyframes kpToastIn { from{ transform: translateY(10px); opacity:0 } to { transform: translateY(0); opacity:1 } }
+
+.kp-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(145deg,#8A4DFF,#FF6FD8);
+  color: #fff; border-radius: 999px; padding: 6px 10px; font-weight: 800;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+}
+
+.kp-achv-list{ display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin-top: 10px; }
+.kp-achv-card{
+  background:#fff; border-radius:14px; padding:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+.kp-achv-card .title{ font-weight:900; }
+.kp-achv-card .desc{ opacity:.75; font-weight:600; font-size: 14px; }
+
+/* Minimal modal shell reused with stats */
+.kp-modal{ position: fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:14000; background: rgba(0,0,0,.35); }
+.kp-modal.open{ display:flex }
+.kp-card{ min-width:300px; max-width: 92vw; background:#fff; border-radius:18px; padding:16px; box-shadow: 0 16px 40px rgba(0,0,0,.25); }
+.kp-close{ position:absolute; right:12px; top:10px; border:0; background:transparent; font-size:20px; cursor:pointer; }

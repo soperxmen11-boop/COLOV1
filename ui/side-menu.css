@@ -1,0 +1,10 @@
+#sideOverlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:2000;display:none}
+#sideDrawer{position:fixed;top:0;right:0;height:100%;width:min(320px,86vw);
+background:rgba(12,20,48,.92);backdrop-filter:blur(8px);border-left:1px solid rgba(255,255,255,.16);
+box-shadow:-20px 0 60px rgba(0,0,0,.4);transform:translateX(100%);transition:transform .28s ease;z-index:2001;
+padding:18px 14px}
+#sideDrawer.open{transform:translateX(0)}#sideOverlay.show{display:block}
+#sideDrawer h3{margin:4px 6px 12px;font-weight:900}
+#sideList{display:flex;flex-direction:column;gap:10px}
+#sideList .menu-btn{justify-content:flex-start;width:100%;border-radius:14px;padding:12px 14px;
+font-weight:800;font-size:1rem;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06)}

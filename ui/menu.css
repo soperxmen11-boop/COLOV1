@@ -1,0 +1,30 @@
+#homeShell{max-width:1100px;margin:0 auto;padding:16px 12px}
+#homeHeader{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+#homeHeader .brand{font-weight:900;font-size:clamp(18px,3.6vw,24px);letter-spacing:.3px}
+#burger{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.18);
+background:rgba(255,255,255,.06);display:grid;place-items:center;cursor:pointer;
+box-shadow:0 8px 22px rgba(0,0,0,.3);transition:transform .12s ease}
+#burger:active{transform:scale(.96)}
+#choiceGrid{display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:18px;align-items:stretch}
+.big-card{border-radius:24px;padding:24px;display:grid;place-items:center;text-align:center;cursor:pointer;
+background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
+border:1px solid rgba(255,255,255,.16);box-shadow:0 16px 40px rgba(0,0,0,.35);
+transition:transform .12s ease,box-shadow .12s ease,background .2s ease;
+font-weight:900;font-size:clamp(18px,3.8vw,24px);letter-spacing:.3px}
+.big-card:hover{transform:translateY(-2px) scale(1.02)}
+.big-card .ico{width:64px;height:64px;border-radius:50%;margin-bottom:10px;display:grid;place-items:center;
+border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.12);font-size:28px}
+#homePage .menu{display:none !important}
+@media (max-width:740px){#choiceGrid{grid-template-columns:1fr}}
+
+/* button glow on click */
+.btn-glow{ box-shadow:0 0 0 rgba(255,255,255,0); }
+.btn-glow.trigger{
+  animation:btnGlow .35s ease;
+}
+@keyframes btnGlow{
+  0%{ box-shadow:0 0 0 rgba(255,255,255,0); }
+  40%{ box-shadow:0 0 28px rgba(255,255,255,.85), 0 0 60px rgba(255,255,255,.55); }
+  100%{ box-shadow:0 0 0 rgba(255,255,255,0); }
+}
+.big-card{ position:relative; overflow:hidden; }

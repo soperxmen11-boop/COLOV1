@@ -1,0 +1,27 @@
+
+/* ui/fx.css — visual effects */
+@keyframes kp-shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.kp-wrong { animation: kp-shake .38s ease; }
+
+.kp-burst { position: absolute; pointer-events: none; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+.kp-burst .p {
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  filter: drop-shadow(0 4px 18px rgba(255,255,255,.45));
+  animation: kp-pop 900ms ease forwards;
+}
+@keyframes kp-pop {
+  0% { transform: translate(0,0) scale(.2); opacity: 1; }
+  70% { opacity: .9; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1.6); opacity: 0; }
+}
+
+.kp-score-bump { animation: kp-bump .35s ease; }
+@keyframes kp-bump { 0%{transform:scale(1)} 40%{transform:scale(1.25)} 100%{transform:scale(1)} }
+
+.hidden{display:none!important;} /* KIDS PRO UPGRADE */

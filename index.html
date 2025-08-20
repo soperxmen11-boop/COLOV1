@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colorinka</title>
+  <meta name="theme-color" content="#071028">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ui/bg.css">
+  <link rel="stylesheet" href="ui/menu.css">
+  <link rel="stylesheet" href="ui/side-menu.css">
+  <link rel="stylesheet" href="ui/fx.css">
+  <link rel="stylesheet" href="ui/advanced.css">
+  <link rel="stylesheet" href="ui/shop.css">
+  <link rel="stylesheet" href="ui/game-effects.css">
+  <link rel="stylesheet" href="ui/progress.css">
+  <link rel="stylesheet" href="ui/achievements.css">
+  <link rel="stylesheet" href="ui/stats.css">
+  <link rel="stylesheet" href="ui/timer.css">
+<link rel="manifest" href="manifest.webmanifest"> <!-- KIDS PRO UPGRADE -->
+<meta name="theme-color" content="#0b1020"> <!-- KIDS PRO UPGRADE -->
+<meta name="description" content="KidsPro — kid-friendly timed puzzles."> <!-- KIDS PRO UPGRADE -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <!-- KIDS PRO UPGRADE -->
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png"> <!-- KIDS PRO UPGRADE -->
+<meta name="apple-mobile-web-app-capable" content="yes"> <!-- KIDS PRO UPGRADE -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- KIDS PRO UPGRADE -->
+<style>
+/* KIDS PRO UPGRADE */ 
+#splashOverlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#4587FF 0%,#2ED5A2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px}
+#splashOverlay img{width:min(38vh,320px);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
+#splashOverlay .brand{font:800 32px/1.2 system-ui,Segoe UI,Roboto,Poppins,sans-serif;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}</style>
+</head>
+<body>
+
+<div id="splashOverlay" role="img" aria-label="Colorinka is loading">
+  <img src="assets/icons/icon-512.png" alt="Colorinka logo"/>
+  <div class="brand">Colorinka</div>
+</div> class="theme-candy">
+  <div id="toasts" class="toasts"></div>
+  <header class="topbar">
+    <div class="brand"><img src="icons/logo.png" class="logo"><span>Kids Pro</span></div>
+    <div class="hud-right">
+      <div class="coins">🪙 <b id="coins">0</b></div>
+      <label>Music</label><input id="volMusic" type="range" min="0" max="1" step="0.01" value="0.18">
+      <label>SFX</label><input id="volSfx" type="range" min="0" max="1" step="0.01" value="0.5">
+      <button id="btnMute" class="btn subtle">🔊</button>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section id="homePage" class="page active">
+    <h1 class="title">Choose your mode</h1>
+    <div class="menu">
+      <button class="menu-btn primary" data-nav="colorPage">🎨 Color Match</button>
+      <button class="menu-btn" data-nav="mascotPage">🐾 Mascot Match</button>
+      <button class="menu-btn" data-nav="shopPage">🛍️ Shop</button>
+      <button class="menu-btn" data-nav="settingsPage">⚙️ Settings</button>
+      <button class="menu-btn" data-nav="leaderboardPage">🏆 Leaderboard</button>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settingsPage" class="page">
+    <h2>Settings</h2>
+    <div class="grid2">
+      <div class="card">
+        <div class="row"><label>Duration</label><select id="duration" class="select"><option>30</option><option>45</option><option selected>60</option></select></div>
+        <div class="row"><label>Difficulty</label><select id="difficulty" class="select"><option value="easy">Easy</option><option selected value="normal">Normal</option><option value="hard">Hard</option></select></div>
+        <div class="row"><label>Theme</label><select id="theme" class="select"><option value="blue" selected>Blue</option><option value="purple">Purple</option><option value="teal">Teal</option></select></div>
+        <div class="row"><label>Voice</label><select id="voice" class="select"><option value="en" selected>English</option><option value="ar">Arabic</option><option value="off">Off</option></select></div>
+      </div>
+      <div class="card">
+        <button class="btn" data-nav="homePage">⬅ Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shopPage" class="page">
+    <h2>Shop</h2>
+    <div id="shopGrid" class="shop-grid"></div>
+    <div class="row center"><button class="btn" data-nav="homePage">⬅ Back</button></div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section id="leaderboardPage" class="page">
+    <h2>Leaderboard</h2>
+    <ol id="lbList"></ol>
+    <div class="row center"><button class="btn" data-nav="homePage">⬅ Back</button></div>
+  </section>
+
+  <!-- COLOR GAME -->
+  <section id="colorPage" class="page">
+    <div class="hud">
+      <div>Level: <b id="level">1</b></div>
+      <div>Time: <b id="time">0</b>s</div>
+      <div>Score: <b id="score">0</b></div>
+      <div>Best: <b id="best">0</b></div>
+    </div>
+    <div class="card playcard">
+      <div id="promptWord" class="gradient">BLUE</div>
+      <div id="colorBox" class="box"></div>
+      <div id="feedback" class="feedback"></div>
+      <div class="actions">
+        <button id="btnNo" class="btn pill">❌ Not Match</button>
+        <button id="btnYes" class="btn pill primary">✅ Match</button>
+      </div>
+    </div>
+    <div class="row center"><button class="btn" data-nav="homePage">🏠 Menu</button><button id="btnRestart" class="btn primary">🔁 Restart</button></div>
+  </section>
+
+  <!-- MASCOT GAME -->
+  <section id="mascotPage" class="page">
+    <div class="hud">
+      <div>Level: <b id="levelM">1</b></div>
+      <div>Time: <b id="timeM">0</b>s</div>
+      <div>Score: <b id="scoreM">0</b></div>
+    </div>
+    <div class="card playcard">
+      <div id="promptMascot" class="gradient">LION</div>
+      <div id="emojiBox" class="emoji">🦁</div>
+      <div id="feedbackM" class="feedback"></div>
+      <div class="actions">
+        <button id="btnNoM" class="btn pill">❌ Not Match</button>
+        <button id="btnYesM" class="btn pill primary">✅ Match</button>
+      </div>
+    </div>
+    <div class="row center"><button class="btn" data-nav="homePage">🏠 Menu</button><button id="btnRestartM" class="btn primary">🔁 Restart</button></div>
+  </section>
+
+  <footer class="footer"><small>Kids Pro — PWA • Offline • Shop • Settings</small></footer>
+
+  <script src="game.js" defer></script>
+  <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js'))}</script>
+  <div id="ui-bg" aria-hidden="true"></div>
+  <script src="ui/menu_init.js" defer></script>
+  <script src="ui/audio.js" defer></script>
+  <script src="ui/particles.js" defer></script>
+  <script src="ui/sfx.js" defer></script>
+  <script src="ui/fx.js" defer></script>
+  <script src="ui/advanced.js" defer></script>
+  <script src="ui/shop.js" defer></script>
+  <script src="ui/game-effects.js" defer></script>
+  <script src="ui/progress.js" defer></script>
+  <script src="ui/achievements.js" defer></script>
+  <script src="ui/timer.js" defer></script>
+<div id="shopPanel" class="panel hidden"> <!-- KIDS PRO UPGRADE -->
+  <h3>Shop</h3>
+  <button id="btnShopClose" class="btn-secondary">Close</button>
+</div>
+
+<script>
+/* KIDS PRO UPGRADE */
+window.addEventListener('load',()=>{
+  const el=document.getElementById('splashOverlay');
+  setTimeout(()=>{if(el){el.style.animation='fadeOut .5s ease forwards';setTimeout(()=>el.remove(),650)}},700);
+});
+</script>
+</body>
+</html>

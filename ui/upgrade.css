@@ -1,0 +1,38 @@
+/* KIDS PRO UPGRADE */
+:root{--space-1:.375rem;--space-2:.75rem;--space-3:1rem;--space-4:1.25rem;--radius-xl:16px;--shadow-1:0 6px 16px rgba(0,0,0,.15);--brand-1:#6c5ce7;--brand-2:#00d2d3;--ok:#2ecc71;--warn:#e67e22;--danger:#e74c3c;--text-strong:#1a1a1a;--text-muted:#4b5563;--focus:#111827;}
+*{box-sizing:border-box;}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,"Noto Sans",sans-serif;color:var(--text-strong);-webkit-tap-highlight-color:transparent;} /* KIDS PRO UPGRADE */
+button,.button{min-height:48px;padding:.75rem 1.25rem;border-radius:16px;border:0;font-weight:700;letter-spacing:.25px;box-shadow:0 6px 16px rgba(0,0,0,.15);transition:transform .12s ease,opacity .12s ease;outline:none;}
+button:focus-visible{outline:3px solid var(--brand-2);outline-offset:2px;} /* KIDS PRO UPGRADE */
+.btn-primary{background:linear-gradient(135deg,var(--brand-1),#8a7cf0);color:#fff;}
+.btn-secondary{background:linear-gradient(135deg,#0ea5e9,var(--brand-2));color:#072b35;}
+button:active{transform:scale(.98);} /* KIDS PRO UPGRADE */
+.toolbar,.panel,.popup{background:#fff;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.15);padding:1rem;}
+/* KIDS PRO UPGRADE: timer styles removed */
+/* KIDS PRO UPGRADE: timer styles removed */
+.hidden{display:none!important;}
+@media(min-width:768px){.toolbar{padding:1.25rem;}}
+#time,#timer{display:none;} /* KIDS PRO UPGRADE: hide duplicate text timer */
+
+
+/* KIDS PRO UPGRADE: circle timer left layout */
+.panel, .play-row { display:flex; align-items:center; gap:12px; }
+.play-area{ flex:1; }
+.timer-circle{ width:90px; height:90px; margin:0 8px 0 0; position:relative; flex:0 0 90px; }
+.timer-ring{ transform:rotate(-90deg); width:100%; height:100%; }
+.timer-ring__bg{ fill:none; stroke:#e5e7eb; stroke-width:10; opacity:.6; }
+.timer-ring__fg{ fill:none; stroke:#4f46e5; stroke-width:10; stroke-linecap:round; stroke-dasharray:339.292; stroke-dashoffset:0; transition:stroke-dashoffset .2s linear; }
+.timer-center{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
+.timer-label{ font-weight:800; font-size:18px; }
+/* color buckets */
+.timer-ring__fg.ok{ stroke:#16a34a; }    /* green */
+.timer-ring__fg.warn{ stroke:#f59e0b; }  /* yellow */
+.timer-ring__fg.crit{ stroke:#ef4444; }  /* red */
+
+/* KIDS PRO UPGRADE: effects for correct/wrong */
+.kp-correct { animation: kpPop .28s ease-out; }
+.kp-wrong   { animation: kpShake .38s ease-in-out; }
+@keyframes kpPop { 0%{transform:scale(.9);opacity:.9} 60%{transform:scale(1.06)} 100%{transform:scale(1);opacity:1} }
+@keyframes kpShake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
+.kp-confetti { position:absolute; width:8px; height:8px; border-radius:2px; pointer-events:none; will-change:transform,opacity; }
+.kp-confetti-layer { position:fixed; inset:0; overflow:hidden; z-index:999; pointer-events:none; }

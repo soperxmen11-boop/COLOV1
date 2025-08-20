@@ -1,0 +1,10 @@
+:root{--bg-a:#111433;--bg-b:#1a1d4d;--bg-c:#151a45;}
+#ui-bg{position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+radial-gradient(360px 300px at 15% 18%, #ffe1f2cc, transparent 60%),
+radial-gradient(300px 260px at 80% 20%, #ffd3a8cc, transparent 60%),
+radial-gradient(300px 260px at 28% 78%, #bde7ffcc, transparent 60%),
+radial-gradient(360px 300px at 82% 80%, #e3c8ffcc, transparent 60%),
+linear-gradient(140deg, var(--bg-a), var(--bg-b), var(--bg-c));
+background-size:100% 100%,100% 100%,100% 100%,100% 100%,160% 160%;
+animation:bgShift 24s ease-in-out infinite alternate}
+@keyframes bgShift{from{background-position:0% 0%} to{background-position:100% 100%}}

@@ -1,0 +1,45 @@
+
+/* ui/stats.css */
+.kp-stats h2{ margin:0 0 8px 0; font-weight: 900; }
+.kp-stats .row{ display:flex; gap:12px; flex-wrap:wrap; margin:8px 0; }
+.kp-stats .pill{
+  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:14px;
+  background: rgba(0,0,0,.05); font-weight:800;
+}
+.kp-actions{ display:flex; gap:10px; margin-top:12px; }
+.kp-btn{ border:0; border-radius:12px; padding:10px 14px; font-weight:900; cursor:pointer; box-shadow:0 8px 18px rgba(0,0,0,.15); }
+.kp-btn.primary{ background: linear-gradient(145deg,#8A4DFF,#FF6FD8); color:#fff; }
+.kp-btn.secondary{ background:#fff; }
+
+
+#statsOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+}
+
+#statsModal {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+}
+
+#statsOverlay.show { display:flex; }
+#statsOverlay.show #statsModal { opacity:1; transform: scale(1); }
+
+#statsModal h2 { margin-top:0; font-size:1.5em; }
+#statsModal button { margin:8px; padding:10px 20px; border:none; border-radius:6px;
+  background:#4CAF50; color:white; cursor:pointer; font-size:1em; }
+#statsModal button:hover { background:#45a049; }

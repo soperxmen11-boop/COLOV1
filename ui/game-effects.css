@@ -1,0 +1,15 @@
+
+/* ui/game-effects.css — stars on correct (no backgrounds) */
+.kp-star{
+  position: fixed;
+  font-size: 22px;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.25));
+  animation: kpStarUp 1.2s ease-out forwards;
+  z-index: 9999;
+}
+@keyframes kpStarUp{
+  0%{ transform: translateY(0) scale(1); opacity:1 }
+  70%{ transform: translateY(-80px) scale(1.1); opacity:.85 }
+  100%{ transform: translateY(-120px) scale(.9); opacity:0 }
+}
