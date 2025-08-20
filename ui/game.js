@@ -143,3 +143,81 @@ if(oldMascotFX){
     wrong(el){ oldMascotFX.wrong(el); playMascotSfx('wrong'); }
   };
 }
+
+/* COLORINKA UPGRADE: Mascot FX bridge */
+(function(){
+  // ensure mascotFX exists
+  if(!window.mascotFX){
+    window.mascotFX = {
+      correct(el){ try{ el&&el.classList.add('mascot-correct'); setTimeout(()=>el&&el.classList.remove('mascot-correct'),300);}catch(e){} },
+      wrong(el){ try{ el&&el.classList.add('mascot-wrong'); setTimeout(()=>el&&el.classList.remove('mascot-wrong'),400);}catch(e){} }
+    };
+  }
+  // Allow game code to trigger via events
+  window.addEventListener('mascot:correct', e=> window.mascotFX.correct(e.detail?.el||e.target));
+  window.addEventListener('mascot:wrong',   e=> window.mascotFX.wrong(e.detail?.el||e.target));
+
+  // Auto-detect clicks on mascot options that carry data-correct
+  document.addEventListener('click', (ev)=>{
+    const el = ev.target.closest('[data-mascot],[data-role="mascot"],.mascot-card,.mascot-option');
+    if(!el) return;
+    const flag = (el.getAttribute('data-correct')||'').toString().toLowerCase();
+    if(flag==='true' || flag==='1' || flag==='yes'){ 
+      try{ window.mascotFX.correct(el); }catch(e){}
+    }else if(flag==='false' || flag==='0' || flag==='no'){
+      try{ window.mascotFX.wrong(el); }catch(e){}
+    }
+  }, true);
+})();
+
+/* COLORINKA UPGRADE: background music */
+(function(){
+  let bg;
+  function ensureSettings(){
+    if(!window.gameSettings) window.gameSettings = {};
+    if(typeof window.gameSettings.music === 'undefined'){
+      // read from session if present
+      try{
+        const v = sessionStorage.getItem('colorinka_music');
+        window.gameSettings.music = (v===null)? true : (v==='true');
+      }catch(e){ window.gameSettings.music = true; }
+    }
+    if(typeof window.gameSettings.sfx === 'undefined'){
+      try{
+        const v = sessionStorage.getItem('colorinka_sfx');
+        window.gameSettings.sfx = (v===null)? true : (v==='true');
+      }catch(e){ window.gameSettings.sfx = true; }
+    }
+  }
+  function saveSettings(){
+    try{
+      sessionStorage.setItem('colorinka_music', String(!!window.gameSettings.music));
+      sessionStorage.setItem('colorinka_sfx', String(!!window.gameSettings.sfx));
+    }catch(e){}
+  }
+  function createBG(){
+    if(bg) return bg;
+    bg = new Audio('assets/music/bg.mp3');
+    bg.loop = true;
+    bg.volume = 0.35;
+    return bg;
+  }
+  function tryPlay(){
+    ensureSettings();
+    if(window.gameSettings.music === false) return;
+    const a = createBG();
+    a.play().catch(()=>{});
+  }
+  // start on first user interaction for autoplay policy
+  ['click','touchstart','keydown'].forEach(ev=>{
+    window.addEventListener(ev, function once(){
+      window.removeEventListener(ev, once, {capture:false});
+      tryPlay();
+    }, {once:true});
+  });
+  // Listen to custom settings events (emit these from your settings UI)
+  window.addEventListener('music:on', ()=>{ ensureSettings(); window.gameSettings.music=true; saveSettings(); tryPlay(); });
+  window.addEventListener('music:off',()=>{ ensureSettings(); window.gameSettings.music=false; saveSettings(); if(bg){ try{bg.pause();}catch(e){} } });
+  window.addEventListener('sfx:on',   ()=>{ ensureSettings(); window.gameSettings.sfx=true; saveSettings(); });
+  window.addEventListener('sfx:off',  ()=>{ ensureSettings(); window.gameSettings.sfx=false; saveSettings(); });
+})();

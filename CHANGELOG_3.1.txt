@@ -1,0 +1,9 @@
+
+Colorinka v3.1 Fixes
+--------------------
+1) Mascot Match effects: added robust bridge and event hooks + dataset auto-detect.
+   - Click any element with [data-correct="true"/"false"] inside Mascot match to trigger FX.
+   - Or dispatch custom events: window.dispatchEvent(new CustomEvent('mascot:correct',{detail:{el:node}}))
+2) Background music: added looped bg music (assets/music/bg.mp3), auto-start on first interaction.
+   - Controlled by sessionStorage keys colorinka_music / colorinka_sfx and custom events music:on/off.
+3) Manifest ensured with Colorinka name + icons.
