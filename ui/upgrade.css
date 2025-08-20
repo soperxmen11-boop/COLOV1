@@ -36,3 +36,11 @@ button:active{transform:scale(.98);} /* Colorinka UPGRADE */
 @keyframes kpShake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
 .kp-confetti { position:absolute; width:8px; height:8px; border-radius:2px; pointer-events:none; will-change:transform,opacity; }
 .kp-confetti-layer { position:fixed; inset:0; overflow:hidden; z-index:999; pointer-events:none; }
+
+/* COLORINKA UPGRADE: mascot fx */
+.mascot-correct { animation: kpPop .3s ease-out; }
+.mascot-wrong   { animation: kpShake .4s ease-in-out; }
+@keyframes kpPop {0%{transform:scale(.9);opacity:.9}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+@keyframes kpShake {0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.confetti-piece{position:absolute;width:8px;height:8px;border-radius:2px;pointer-events:none;will-change:transform,opacity;}
+.confetti-layer{position:fixed;inset:0;overflow:hidden;z-index:999;pointer-events:none;}

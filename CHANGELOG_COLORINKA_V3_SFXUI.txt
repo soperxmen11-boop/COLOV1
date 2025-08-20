@@ -1,0 +1,7 @@
+
+Colorinka v3 SFX UI
+-------------------
+- Added UI sound effects for buttons and popups.
+- assets/sfx/ui/: ui-click and ui-popup (mp3+ogg).
+- Patched ui.js/utils.js to play sounds on button clicks and popup events.
+- Integrated with SFX toggle.

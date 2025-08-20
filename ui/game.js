@@ -90,3 +90,56 @@ window.kpFX = (function(){
     wrong(el){ addOnce(el,'kp-wrong',380); }
   };
 })();
+
+/* COLORINKA UPGRADE: mascot fx helper */
+window.mascotFX = (function(){
+  function addOnce(el,cls,ms){if(!el)return;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),ms);}
+  function confettiFrom(el,count=12){
+    try{
+      const rect = el.getBoundingClientRect();
+      let layer=document.querySelector('.confetti-layer');
+      if(!layer){layer=document.createElement('div');layer.className='confetti-layer';document.body.appendChild(layer);}
+      for(let i=0;i<count;i++){
+        const p=document.createElement('div');
+        p.className='confetti-piece';
+        const colors=['#FFD54F','#FF6B6B','#42A5F5','#66BB6A'];
+        p.style.background=colors[i%colors.length];
+        p.style.left=(rect.left+rect.width/2)+'px';
+        p.style.top=(rect.top+rect.height/2)+'px';
+        layer.appendChild(p);
+        const dx=(Math.random()*2-1)*80;
+        const dy=-(40+Math.random()*80);
+        const rot=(Math.random()*360);
+        const dur=600+Math.random()*500;
+        p.animate([{transform:"translate(0,0) rotate(0deg)",opacity:1},{transform:`translate(${dx}px,${dy}px) rotate(${rot}deg)`,opacity:0}],{duration:dur,easing:'cubic-bezier(.2,.8,.2,1)',fill:'forwards'}).onfinish=()=>p.remove();
+      }
+      setTimeout(()=>{if(layer&&!layer.children.length)layer.remove();},1500);
+    }catch(e){}
+  }
+  return {
+    correct(el){addOnce(el,'mascot-correct',300);confettiFrom(el,14);},
+    wrong(el){addOnce(el,'mascot-wrong',400);}
+  };
+})();
+
+/* COLORINKA UPGRADE: mascot sfx */
+function playMascotSfx(type){
+  try{
+    if(window.gameSettings && window.gameSettings.sfx===false) return;
+    let src = '';
+    if(type==='correct') src='assets/sfx/sfx-correct.mp3';
+    if(type==='wrong') src='assets/sfx/sfx-wrong.mp3';
+    if(src){
+      const a=new Audio(src);
+      a.volume=0.6;
+      a.play().catch(()=>{});
+    }
+  }catch(e){}
+}
+const oldMascotFX=window.mascotFX;
+if(oldMascotFX){
+  window.mascotFX={
+    correct(el){ oldMascotFX.correct(el); playMascotSfx('correct'); },
+    wrong(el){ oldMascotFX.wrong(el); playMascotSfx('wrong'); }
+  };
+}

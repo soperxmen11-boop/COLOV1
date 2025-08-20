@@ -1,0 +1,6 @@
+
+Colorinka v2 SFX
+-----------------
+- Added mascot sound effects (ding for correct, buzz for wrong).
+- Assets placed under assets/sfx/ (mp3+ogg).
+- Integrated with mascotFX.correct()/wrong() and respect Settings (sfx toggle).

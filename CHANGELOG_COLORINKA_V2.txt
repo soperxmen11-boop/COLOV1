@@ -1,0 +1,6 @@
+
+Colorinka v2
+-------------
+- Added mascotFX animations (pop, shake) and confetti to Mascot Match.
+- Injected mascotFX.correct()/wrong() calls where mascot answers are validated.
+- Updated CSS (style/upgrade.css) with mascot-correct/mascot-wrong keyframes.
